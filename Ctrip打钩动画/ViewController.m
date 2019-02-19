@@ -19,12 +19,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     self.checkView = [[CTCheckEffectView alloc] initWithFrame:CGRectMake(60, 100, 100, 100) themeColor:[UIColor blueColor]];
     [self.view addSubview:self.checkView];
     
     [self.checkView startAnimation];
 }
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    [self.checkView stopAnimation];
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self.checkView startAnimation];
+    });
+}
+
 
 
 @end
