@@ -20,6 +20,19 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    
+    UIView *contentView = [[UIView alloc] initWithFrame:CGRectMake(300, 300, 100, 100)];
+    contentView.transform = CGAffineTransformMakeScale(0, 0);
+    contentView.backgroundColor = [UIColor blueColor];
+    contentView.clipsToBounds= YES;
+    contentView.layer.cornerRadius = 50;
+    [self.view addSubview:contentView];
+    
+    [UIView animateWithDuration:2 animations:^{
+        contentView.transform = CGAffineTransformMakeScale(1, 1);
+    }];
+    
+    
     self.checkView = [[CTCheckEffectView alloc] initWithFrame:CGRectMake(60, 100, 100, 100) themeColor:[UIColor blueColor]];
     [self.view addSubview:self.checkView];
     
